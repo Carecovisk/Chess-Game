@@ -20,11 +20,14 @@ public class Main {
                 System.out.println();
                 System.out.print("Source: ");
                 ChessPosition source = UI.readChessPosition(scanner);
-                System.out.println();
 
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces(), possibleMoves);
+
+                System.out.println();
                 System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(scanner);
-
                 ChessPiece capturedPiece = chessMatch.peformChessMove(source, target);
 
             } catch (ChessException | InputMismatchException e) {
